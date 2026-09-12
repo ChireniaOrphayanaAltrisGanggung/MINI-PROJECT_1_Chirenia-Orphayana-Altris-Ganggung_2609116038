@@ -1,0 +1,151 @@
+print("--JADWAL KEBERANGKATAN BUS CENDANA TRAVEL BALIKPAPAN--")
+print("TANGGAL 14 - 20 SEPTEMBER 2026")
+print("PERHATIAN : JADWAL BALIKPAPAN/SAMARINDA SETIAP HARI")
+print("PERHATIAN : JADWAL BALIKPAPAN/SANGGATA 1 KALI DALAM 2 HARI")
+
+Jadwal_Travel = [
+    ["SENIN A", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7080 BS", "PAK AHMAD"],
+    ["SENIN B", "11.00", "BALIKPAPAN/SANGGATA", "KT 7090 BS", "PAK AMIR"],
+    ["SELASA", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7011 BS", "PAK UDIN"],
+    ["RABU A", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7015 BS", "PAK ANANG"],
+    ["RABU B", "11.00", "BALIKPAPAN/SANGGATA", "KT 7010 BS", "PAK SATYA"],
+    ["KAMIS", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7119 BS", "PAK KUMIS"],
+    ["JUMAT A", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7080 BS", "PAK AHMAD"],
+    ["JUMAT B", "11.00",  "BALIKPAPAN/SANGGATA", "KT 7090 BS", "PAK AMIR"],
+    ["SABTU", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7011 BS", "PAK UDIN"],
+    ["MINGGU A", "08.00", "BALIKPAPAN/SAMARINDA", "KT 7015 BS", "PAK ANANG"],
+    ["MINGGU B", "11.00", "BALIKPAPAN/SANGGATA", "KT 7010 BS", "PAK SATYA"]
+]
+
+print(Jadwal_Travel)
+
+while True :
+
+
+    print("PILIH MENU =")
+    print("1. Tambah Jadwal")
+    print("2. Ubah Jadwal")
+    print("3. Hapus Jadwal")
+    print("4. Tampilkan Jadwal")
+    print("5. Keluar")
+
+    PILIH_MENU = input("Pilih Menu (1 - 5) :")
+
+    if PILIH_MENU == "1" :
+        Hari = input("Hari keberangkatan :")
+        Jam = input("Jam Keberangkatan :")
+        Rute = input("Rute :")
+        Plat_Mobil = input("Plat Mobil :")
+        Driver = input("Nama Driver :")
+        Jadwal_Baru = [Hari, Jam, Rute, Plat_Mobil, Driver]
+        Jadwal_Travel.append(Jadwal_Baru)
+        print("Jadwal baru berhasil di tambahkan:",Jadwal_Travel)
+        continue
+
+
+    elif PILIH_MENU == "2" :
+
+        Cari_Jadwal = input("Jadwal hari apa yang ingin anda ubah? (Berupa nama hari secara lengkap, ex : Senin A)").lower()
+        ada_jadwal = False
+
+        for jadwal in Jadwal_Travel:
+        
+            if Cari_Jadwal == jadwal[0].lower():
+                ada_jadwal =True
+                print("Jadwal berhasil ditemukan")
+                print("jadwal:",jadwal)
+
+                while True :
+
+                    Ubah_Jadwal = input("Apa yang ingin anda ubah?").lower()
+                    if Ubah_Jadwal == "Hari".lower() :
+                        jadwal[0] = input("Hari Baru :")
+                        print("Hari berhasil di ubah:",Jadwal_Travel)
+                    elif Ubah_Jadwal == "Jam".lower() :
+                        jadwal [1] = input("Jam Baru :")
+                        print("Jam berhasil di ubah:",Jadwal_Travel)
+                    elif Ubah_Jadwal == "Rute".lower() :
+                        jadwal[2] = input("Rute Baru :")
+                        print("Rute berhasil di ubah:",Jadwal_Travel)
+                    elif Ubah_Jadwal == "Mobil".lower() :
+                        jadwal[3] = input("Plat Mobil Baru :")
+                        print("Plat berhasil di ubah:",Jadwal_Travel)
+                    elif Ubah_Jadwal == "Driver".lower() :
+                        jadwal[4] = input("Nama Driver Baru :")
+                        print("Driver berhasil di ubah:",Jadwal_Travel)
+                    elif Ubah_Jadwal == "Selesai".lower() :
+                        print("Anda kembali ke menu utama")
+                        break
+
+                    else :
+                        print("Pilihan tidak ditemukan, mohon periksa kembali.")
+
+        if ada_jadwal ==  False :          
+            print("Jadwal tidak ditemukan, mohon periksa kembali.") 
+        continue        
+
+    elif PILIH_MENU == "3" :
+        while True :
+            Cari_Jadwal = input("Jadwal hari apa yang ingin anda hapus? (Berupa nama hari secara lengkap, ex : Senin A)").lower()
+
+            ditemukan = False
+            Hapus_berhasil = False
+        
+            for jadwal in Jadwal_Travel:
+                
+                if Cari_Jadwal == jadwal[0].lower():
+                    ditemukan =True
+                    print("Jadwal berhasil ditemukan")
+                    print("jadwal:",jadwal)
+
+                    while True :
+                        konfirmasi = input("Apakah anda yakin ingin menghapus jadwal ini? (ya/tidak)").lower()
+
+                        if konfirmasi == "ya" :
+                            Jadwal_Travel.remove(jadwal)
+                            Hapus_berhasil = True
+                            print("Jadwal berhasil di hapus")
+                            print("Jadwal terbaru:",Jadwal_Travel)
+                            break    
+
+                        elif konfirmasi == "tidak" :
+                            print("Jadwal tidak jadi dihapus")
+                            break
+                        else:
+                            print("Pilihan tidak tersedia, silahkan pilih ya/tidak.")
+                    break
+
+            if Hapus_berhasil :
+                print("Anda kembali ke menu utama")
+                break
+            if ditemukan == False :
+                print("Jadwal tidak ditemukan, mohon periksa kembali.")
+
+    elif PILIH_MENU == "4" :
+        print("--JADWAL TRAVEL CENDANA TRAVEL BALIKPAPAN--")
+        print("-TANGGAL 14 - 20 SEPTEMBER--")
+
+        for jadwal in Jadwal_Travel :
+            print("Hari:",jadwal[0])
+            print("Jam:",jadwal[1])
+            print("Rute:",jadwal[2])
+            print("Mobil:",jadwal[3])
+            print("Driver:",jadwal[4])
+            print("=======================")
+
+        continue
+
+    elif PILIH_MENU == "5" :
+        Konfirmasi_ulang = input("Apakah anda yakin ingin keluar (Ya/Tidak?)").lower()
+        if Konfirmasi_ulang == "ya" :
+            print("Anda Keluar.")
+            break
+
+        elif Konfirmasi_ulang == "tidak" :
+            print("Anda kembali ke menu utama")
+            continue
+
+        else:
+            print("Pilihan tidak tersedia, silahkan pilih Ya/Tidak")
+    else:
+        print("Pilihan menu tidak tersedia, silahkan pilih 1-5")        
